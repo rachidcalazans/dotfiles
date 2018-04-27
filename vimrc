@@ -114,4 +114,7 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
+map ,r :RuboCop <CR>
+map ,rr :RuboCop '-l' <CR>
+map ,ra :RuboCop '-a' <CR>
 so ~/.yadr/vim/settings.vim
