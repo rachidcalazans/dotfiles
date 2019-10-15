@@ -7,8 +7,11 @@ set nocompatible
 if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
+"let g:vimrubocop_config = '~/Workspaces/tidy-workspace/rails-workspace/demiguise-api/.rubocop.yml'
 
 " ================ General Config ====================
+set path+=~/Workspaces/tidy-workspace/rails-workspace/gotidy/**
+set path+=~/Workspaces/tidy-workspace/rails-workspace/demiguise-api/**
 
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -31,7 +34,15 @@ syntax on
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
-let mapleader=","
+"let mapleader=","
+let mapleader   = " "
+let g:mapleader = " "
+
+" Quit with q
+map <Leader>q :q<CR>
+
+" Save with w
+map <Leader>w <esc>:w<cr>
 
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
@@ -96,6 +107,7 @@ set wildignore+=*DS_Store*
 set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
 set wildignore+=*.gem
+set wildignore+=*.rvm/**
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
@@ -116,4 +128,37 @@ set smartcase       " ...unless we type a capital
 " ================ Custom Settings ========================
 set colorcolumn=120
 
+set encoding=utf8
+set guifont=DroidSansMono_Nerd_Font:h11
 so ~/.yadr/vim/settings.vim
+
+" hi CursorLine gui=NONE guibg=NONE term=underline cterm=underline
+" Turn on the highlight of the line with the cursor.
+set cursorline
+" ============= Excercism Settings =====================
+let g:syntastic_vim_checkers = ['vint']
+
+function! s:exercism_tests()
+  if expand('%:e') == 'vim'
+    let testfile = printf('%s/%s.vader', expand('%:p:h'),
+          \ tr(expand('%:p:h:t'), '-', '_'))
+    if !filereadable(testfile)
+      echoerr 'File does not exist: '. testfile
+      return
+    endif
+    source %
+    execute 'Vader' testfile
+  else
+    let sourcefile = printf('%s/%s.vim', expand('%:p:h'),
+          \ tr(expand('%:p:h:t'), '-', '_'))
+    if !filereadable(sourcefile)
+      echoerr 'File does not exist: '. sourcefile
+      return
+    endif
+    execute 'source' sourcefile
+    Vader
+  endif
+endfunction
+
+autocmd BufRead *.{vader,vim}
+      \ command! -buffer TestE call s:exercism_tests()
