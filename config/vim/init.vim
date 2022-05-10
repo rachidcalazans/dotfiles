@@ -1,4 +1,4 @@
-let s:config_path = $HOME.'/.config/vim/'
+let s:config_path = $HOME.'/.vim/config/vim/'
 let s:config_files = [
       \'plugins.vim',
       \'functions.vim',
