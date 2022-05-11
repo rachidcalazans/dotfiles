@@ -2,8 +2,6 @@ MAKEFLAGS += --silent
 
 install:
 	mkdir -p ~/.scripts/
-	@echo "Installing command line tools for Xcode"
-	xcode-select --install
 	@echo "Installing brew"
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	@echo "Installing dependencies"
