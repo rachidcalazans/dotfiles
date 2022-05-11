@@ -12,6 +12,9 @@ install:
 	# curl -sSL https://get.rvm.io | bash -s stable --ruby
 	@echo "Creating directory for undodir vim plugin"
 	mkdir -p ~/.vim/undodir
+	@echo "Creating directory for vim configs"
+	mkdir -p ~/.vim/config
+	mkdir -p ~/.vim/scripts
 	@echo "Linking config files"
 	ln -sfn ~/.dotfiles/tmux.conf ~/.tmux.conf
 	ln -sfn ~/.dotfiles/config/vim ~/.vim/config/
