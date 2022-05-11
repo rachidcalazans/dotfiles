@@ -11,7 +11,7 @@ install:
 	# @echo "Installing RVM with stable ruby"
 	# curl -sSL https://get.rvm.io | bash -s stable --ruby
 	@echo "Creating directory for undodir vim plugin"
-	mkdir ~/.vim/undodir
+	mkdir -p ~/.vim/undodir
 	@echo "Linking config files"
 	ln -sfn ~/.dotfiles/tmux.conf ~/.tmux.conf
 	ln -sfn ~/.dotfiles/config/vim ~/.vim/config/
