@@ -25,7 +25,7 @@ install:
 	# 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# @echo "Installing Vim plugins"
 	# vim +'PlugInstall --sync' +qa
-	cd ~/.fzf/ && ./install
+	# cd ~/.fzf/ && ./install
 	@echo "Done!"
 
 vim_update:
