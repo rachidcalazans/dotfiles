@@ -20,11 +20,11 @@ install:
 	ln -sfn ~/.dotfiles/config/vim ~/.vim/config/
 	ln -sfn ~/.dotfiles/scripts/setup_rvm.sh ~/.vim/scripts/setup_rvm.sh
 	echo '\n#RVM on tmux fix\n[ -f ~/.scripts/setup_rvm.sh ] && source ~/.vim/scripts/setup_rvm.sh' >> ~/.zshrc
-	# @echo "Installing vim-plug"
-	# curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	# 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	# @echo "Installing Vim plugins"
-	# vim +'PlugInstall --sync' +qa
+	@echo "Installing vim-plug"
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	@echo "Installing Vim plugins"
+	vim +'PlugInstall --sync' +qa
 	# cd ~/.fzf/ && ./install
 	@echo "Done!"
 
