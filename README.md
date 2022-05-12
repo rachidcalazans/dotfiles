@@ -3,7 +3,6 @@ Vim, Tmux and Oh My Zsh config files
 
 ## Dependencies to have installed
 
-- [oh-my-zsh](https://ohmyz.sh/#install) with [powerlevel10k theme](https://github.com/romkatv/powerlevel10k#oh-my-zsh)
 - [rvm](https://rvm.io/rvm/install)
 
 
