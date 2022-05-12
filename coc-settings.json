@@ -1,0 +1,8 @@
+{
+  "solargraph.diagnostics": true,
+  "solargraph.useBundler": true,
+  "diagnostic.format": "%message [%source]",
+  "diagnostic.virtualText": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": true
+}
