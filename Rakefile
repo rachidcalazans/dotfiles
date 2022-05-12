@@ -67,7 +67,7 @@ def install_homebrew
 end
 
 def install_file(file, method = :symlink)
-  source = "#{ENV["PWD"]}/#{file}"
+  source = "#{ENV["PWD"]}/.#{file}"
   target = "#{ENV["HOME"]}/.#{file}"
 
   puts "======================#{file}=============================="
