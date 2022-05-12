@@ -15,10 +15,22 @@ task :install do
   install_file('tmux.config')
   install_file('zshrc')
   install_file('vimrc')
+  
   puts "======================================================"
   puts "Creating directory for undodir vim plugin"
   puts "======================================================"
   run %{mkdir -p ~/.vim/undodir}
+  
+  puts "======================================================"
+  puts "Installing vim-plug"
+  puts "======================================================"
+  run %{curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim}
+  
+  puts "======================================================"
+  puts "Installing Vim plugins"
+  puts "======================================================"
+  run %{vim +'PlugInstall --sync' +qa}
+  
   puts "======================================================"
   puts "Adding coc-settings on vim"
   puts "======================================================"
