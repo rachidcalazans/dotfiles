@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ! -d "$HOME/.yadr" ]; then
+if [ ! -d "$HOME/.dotfiles" ]; then
     echo "Installing Dotfiles for the first time"
     git clone --depth=1 https://github.com/rachidcalazans/dotfiles.git "$HOME/.dotfiles"
     cd "$HOME/.dotfiles"
