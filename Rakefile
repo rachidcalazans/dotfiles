@@ -8,11 +8,6 @@ task :install do
   puts "Welcome to Dotfiles Installation."
   puts "======================================================"
   puts
-
-  puts "======================================================"
-  puts "Installing Oh My Zsh"
-  puts "======================================================"
-  run %{sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"}
   
   install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
 
