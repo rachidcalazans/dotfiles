@@ -1,11 +1,6 @@
 # dotfiles
 Vim, Tmux and Oh My Zsh config files
 
-## Dependencies to have installed
-
-- [rvm](https://rvm.io/rvm/install)
-
-
 ## Installation
 
 To get started please run:
