@@ -53,17 +53,6 @@ def run(cmd)
 end
 
 def install_homebrew
-  run %{which brew}
-  unless $?.success?
-    puts "======================================================"
-    puts "Installing Homebrew, the OSX package manager...If it's"
-    puts "already installed, this will do nothing."
-    puts "======================================================"
-    run %{/bin/bash -c -Y "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"}
-  end
-
-  puts
-  puts
   puts "======================================================"
   puts "Updating Homebrew."
   puts "======================================================"
