@@ -5,27 +5,19 @@ install:
 	@echo "Installing brew"
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	@echo "Installing dependencies"
-	brew install tmux python3 ctags zsh git curl vim fzf xclip autojump ripgrep
-	# @echo "Installing RVM gpg"
-	# gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-	# @echo "Installing RVM with stable ruby"
-	# curl -sSL https://get.rvm.io | bash -s stable --ruby
+	brew install tmux python3 ctags zsh git vim fzf xclip autojump ripgrep
 	@echo "Creating directory for undodir vim plugin"
 	mkdir -p ~/.vim/undodir
-	@echo "Creating directory for vim configs"
-	mkdir -p ~/.vim/config
-	mkdir -p ~/.vim/scripts
 	@echo "Linking config files"
 	ln -sfn ~/.dotfiles/tmux.conf ~/.tmux.conf
-	ln -sfn ~/.dotfiles/config/vim ~/.vim/config/
-	ln -sfn ~/.dotfiles/scripts/setup_rvm.sh ~/.vim/scripts/setup_rvm.sh
-	echo '\n#RVM on tmux fix\n[ -f ~/.scripts/setup_rvm.sh ] && source ~/.vim/scripts/setup_rvm.sh' >> ~/.zshrc
+	ln -sfn ~/.dotfiles/config/vim ~/.config/
+	ln -sfn ~/.dotfiles/scripts/setup_rvm.sh ~/.scripts/setup_rvm.sh
+	echo '\n#RVM on tmux fix\n[ -f ~/.scripts/setup_rvm.sh ] && source ~/.scripts/setup_rvm.sh' >> ~/.zshrc
 	@echo "Installing vim-plug"
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	@echo "Installing Vim plugins"
 	vim +'PlugInstall --sync' +qa
-	# cd ~/.fzf/ && ./install
 	@echo "Done!"
 
 vim_update:
