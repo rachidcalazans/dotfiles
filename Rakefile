@@ -62,7 +62,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git tmux python3 fzf autojump ripgrep xclip}
+  run %{brew install zsh ctags git tmux python3 fzf autojump ripgrep xclip npm}
   puts
   puts
 end
