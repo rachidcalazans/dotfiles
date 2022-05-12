@@ -10,16 +10,10 @@ Vim, Tmux and Oh My Zsh config files
 
 ## Installation
 
-Clone the repository:
+To get started please run:
 
 ```bash
-git clone https://github.com/rachidcalazans/dotfiles ~/.dotfiles
-```
-
-Run the install script:
-
-```bash
-make install
+sh -c "`curl -fsSL https://raw.githubusercontent.com/rachidcalazans/dotfiles/main/install.sh`"
 ```
 
 ## Update
@@ -29,6 +23,7 @@ Pull the updates:
 ```bash
 cd ~/.dotfiles
 git pull origin master
+rake update
 ```
 
 ## What's included, and how to customize?
