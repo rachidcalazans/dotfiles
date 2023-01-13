@@ -87,7 +87,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'preservim/tagbar'
+" Plug 'preservim/tagbar'
 
 " CoC extension Plugins
 Plug 'neoclide/coc-git', {'do': 'npm install --frozen-lockfile'}
