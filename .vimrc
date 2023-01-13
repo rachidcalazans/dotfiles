@@ -26,6 +26,9 @@ set termguicolors
 set scrolloff=8
 set noshowmode
 set showcmd
+set lazyredraw   " don't redraw everytime
+set synmaxcol=128  " avoid slow rendering for long lines
+syntax sync minlines=64  " faster syntax hl
 
 " :'<,'>w !xclip -selection clipboard
 if system('uname -s') == "Darwin\n"
@@ -74,6 +77,7 @@ Plug 'ecomba/vim-ruby-refactoring'
 Plug 'adelarsq/vim-matchit' " It's a dependency for vim-ruby-refactoring
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'preservim/nerdtree'
 Plug 'tomtom/tcomment_vim'
@@ -99,11 +103,11 @@ Plug 'neoclide/coc-yaml', {'do': 'npm install --frozen-lockfile'}
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
-Plug 'colepeters/spacemacs-theme.vim'
-Plug 'sainnhe/gruvbox-material'
-Plug 'phanviet/vim-monokai-pro'
-Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
+" Plug 'colepeters/spacemacs-theme.vim'
+" Plug 'sainnhe/gruvbox-material'
+" Plug 'phanviet/vim-monokai-pro'
+" Plug 'flazz/vim-colorschemes'
 
 call plug#end()
 
