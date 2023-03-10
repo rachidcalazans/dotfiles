@@ -104,10 +104,6 @@ Plug 'neoclide/coc-yaml', {'do': 'npm install --frozen-lockfile'}
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'chriskempson/base16-vim'
-" Plug 'colepeters/spacemacs-theme.vim'
-" Plug 'sainnhe/gruvbox-material'
-" Plug 'phanviet/vim-monokai-pro'
-" Plug 'flazz/vim-colorschemes'
 
 call plug#end()
 
@@ -144,7 +140,13 @@ let test#strategy = 'vimterminal'
 let test#swift#swiftpm#file_pattern = 'Tests\.swift'
 " let test#swift#swiftpm#executable = "xcodebuild test -scheme to-do-list -workspace to-do-list.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.4' -only-testing to-do-listUITests/to_do_listUITests | xcpretty --test --color"
 let test#swift#swiftpm#executable = "xcodebuild test -scheme to-do-list -workspace to-do-list.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.4'"
-" let test#ruby#rspec#executable = "bundle exec rspec"
+" let test#ruby#rspec#executable = 'spring rspec'
+let test#vim#term_position = "vert botright 85"
+
+" ================
+" Markdown
+" ===============
+nmap <C-p> <Plug>MarkdownPreviewToggle
 
 " ================
 " Todo Bujo
@@ -195,6 +197,7 @@ imap <silent> <C-K> <%=   %><Esc>3hi
 " create <%= foo %> erb tags using
 imap <silent> <C-J> <%  %><Esc>2hi
 :abbr pry require 'pry'; binding.pry<ESC>
+:abbr prn require 'pry'; require 'pry-nav'; binding.pry<ESC>
 :abbr bre require 'debug'; binding.break<ESC>
 
 " RSpec abbr's
@@ -236,7 +239,7 @@ nnoremap <silent><leader>bu :Buffers <CR>
 " ================
 " Window Commands
 " ===============
-nnoremap nt :tabnew<CR>
+nnoremap <silent> <Leader>nt :tabnew<CR>
 
 nnoremap vv :vsp<CR>
 nnoremap ss :sp<CR>
@@ -264,8 +267,8 @@ nnoremap <leader>u :UndotreeShow<CR>
 " nnoremap <leader>cc :'<,'>w !xclip -selection clipboard<CR>
 " vnoremap <leader>cc :'<,'>w !xclip -selection clipboard<CR>
 
-"Clear current search highlight by double tapping //
-nmap <silent> // :nohlsearch<CR>
+"Clear current search highlight by <leader> plus double tapping //
+nmap <silent> <Leader>// :nohlsearch<CR>
 
 " ================
 " Tree Commands
@@ -286,7 +289,8 @@ nnoremap <Leader>pfC :Files config<CR>
 nnoremap <Leader>pfv :Files app/views<CR>
 nnoremap <Leader>pfjj :Files app/assets/javascripts<CR>
 nnoremap <Leader>pfjm :Files app/assets/javascripts/models<CR>
-nnoremap <Leader>pfja :Files app/assets/javascripts/backbone/apps<CR>
+nnoremap <Leader>pfja :Files app/assets/javascripts/backbone/app_bundle<CR>
+nnoremap <Leader>pfjt :Files app/assets/javascripts/templates<CR>
 nnoremap <Leader>pfjv :Files app/assets/javascripts/backbone/views<CR>
 
 fun! TrimWhitespace()
@@ -298,6 +302,7 @@ endfun
 " To open NERDTree automatically when vim starts up
 " autocmd vimenter * NERDTree
 
+ "rg Model . --files -g "*.{coffee}"
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
@@ -321,9 +326,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> Kd :call <SID>show_documentation()<CR>
 " Search doc on Dash app
-nnoremap <silent> K :Dash!<CR>
+nnoremap <silent> KD :Dash!<CR>
 
 
 function! s:show_documentation()
