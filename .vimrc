@@ -77,17 +77,17 @@ Plug 'ecomba/vim-ruby-refactoring'
 Plug 'adelarsq/vim-matchit' " It's a dependency for vim-ruby-refactoring
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'preservim/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'preservim/tagbar'
+Plug 'preservim/tagbar'
 
 " CoC extension Plugins
 Plug 'neoclide/coc-git', {'do': 'npm install --frozen-lockfile'}
@@ -104,6 +104,10 @@ Plug 'neoclide/coc-yaml', {'do': 'npm install --frozen-lockfile'}
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'chriskempson/base16-vim'
+" Plug 'colepeters/spacemacs-theme.vim'
+" Plug 'sainnhe/gruvbox-material'
+" Plug 'phanviet/vim-monokai-pro'
+" Plug 'flazz/vim-colorschemes'
 
 call plug#end()
 
@@ -140,11 +144,12 @@ let test#strategy = 'vimterminal'
 let test#swift#swiftpm#file_pattern = 'Tests\.swift'
 " let test#swift#swiftpm#executable = "xcodebuild test -scheme to-do-list -workspace to-do-list.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.4' -only-testing to-do-listUITests/to_do_listUITests | xcpretty --test --color"
 let test#swift#swiftpm#executable = "xcodebuild test -scheme to-do-list -workspace to-do-list.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.4'"
+" let test#ruby#rspec#executable = "bundle exec rspec"
 " let test#ruby#rspec#executable = 'spring rspec'
 let test#vim#term_position = "vert botright 85"
 
 " ================
-" Markdown
+" Markdown Preview
 " ===============
 nmap <C-p> <Plug>MarkdownPreviewToggle
 
@@ -206,8 +211,8 @@ imap <silent> <C-J> <%  %><Esc>2hi
 :abbr iti it '' do<CR><ESC>BB
 :abbr itii it { expect(1).to be==1 }<ESC>
 :abbr let let(:) {}<ESC>02wl
-:abbr before before do<CR><ESC>
-:abbr allow allow().to receive(:)<ESC>0ww
+:abbr befo before do<CR><ESC>
+:abbr allo allow().to receive(:)<ESC>0ww
 :abbr expec expect().to be<ESC>0ww
 
 " ================
@@ -221,6 +226,8 @@ nnoremap <leader>gco :Git checkout
 nnoremap <leader>gps :Git push<CR>
 nnoremap <leader>gpl :Git pull<CR>
 nnoremap <leader>gfa :Git fetch --all<CR>
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gll :Git log<CR>
 " vim-fugitive
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gl :diffget //3<CR>
@@ -239,7 +246,7 @@ nnoremap <silent><leader>bu :Buffers <CR>
 " ================
 " Window Commands
 " ===============
-nnoremap <silent> <Leader>nt :tabnew<CR>
+nnoremap <silent> <leader>nt :tabnew<CR>
 
 nnoremap vv :vsp<CR>
 nnoremap ss :sp<CR>
@@ -267,8 +274,8 @@ nnoremap <leader>u :UndotreeShow<CR>
 " nnoremap <leader>cc :'<,'>w !xclip -selection clipboard<CR>
 " vnoremap <leader>cc :'<,'>w !xclip -selection clipboard<CR>
 
-"Clear current search highlight by <leader> plus double tapping //
-nmap <silent> <Leader>// :nohlsearch<CR>
+"Clear current search highlight by double tapping //
+nmap <silent> <leader>// :nohlsearch<CR>
 
 " ================
 " Tree Commands
@@ -293,6 +300,12 @@ nnoremap <Leader>pfja :Files app/assets/javascripts/backbone/app_bundle<CR>
 nnoremap <Leader>pfjt :Files app/assets/javascripts/templates<CR>
 nnoremap <Leader>pfjv :Files app/assets/javascripts/backbone/views<CR>
 
+" ================
+" Tagbar Commands
+" ===============
+
+nmap <Leader>tt :TagbarToggle<CR>
+
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -302,7 +315,6 @@ endfun
 " To open NERDTree automatically when vim starts up
 " autocmd vimenter * NERDTree
 
- "rg Model . --files -g "*.{coffee}"
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
@@ -326,9 +338,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> Kd :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Search doc on Dash app
-nnoremap <silent> KD :Dash!<CR>
+nnoremap <silent> K :Dash!<CR>
 
 
 function! s:show_documentation()
