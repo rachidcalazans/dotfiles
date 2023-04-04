@@ -341,6 +341,7 @@ nmap <silent> gr <Plug>(coc-references)
 " nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Search doc on Dash app
 nnoremap <silent> K :Dash!<CR>
+nnoremap <silent> J :call ShowDocumentation()<CR>
 
 
 function! s:show_documentation()
@@ -350,6 +351,14 @@ function! s:show_documentation()
     call CocActionAsync('doHover')
   else
     execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
   endif
 endfunction
 
