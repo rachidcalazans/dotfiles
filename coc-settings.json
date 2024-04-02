@@ -1,8 +1,9 @@
 {
   "solargraph.diagnostics": true,
-  "solargraph.useBundler": true,
+  "solargraph.useBundler": false,
   "diagnostic.format": "%message [%source]",
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.separateRelatedInformationAsDiagnostics": true
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+  "html.filetypes": ["html", "handlebars", "eruby"]
 }
