@@ -77,6 +77,7 @@ Plug 'ecomba/vim-ruby-refactoring'
 Plug 'adelarsq/vim-matchit' " It's a dependency for vim-ruby-refactoring
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'elixir-editors/vim-elixir'
 
 Plug 'preservim/nerdtree'
 Plug 'tomtom/tcomment_vim'
@@ -89,17 +90,23 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'preservim/tagbar'
 
+" Plug 'davidhalter/jedi-vim'
+" Plug 'CoderCookE/vim-chatgpt'
+" Plug 'thmsmlr/gpt.nvim'
+
 " CoC extension Plugins
+Plug 'yaegassy/coc-tailwindcss3',  {'do': 'npm install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'npm install --frozen-lockfile'}
 " Plug 'neoclide/coc-gist', {'do': 'npm install --frozen-lockfile'}
 Plug 'neoclide/coc-solargraph', {'do': 'npm install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'npm install --frozen-lockfile'}
 " Plug 'neoclide/coc-json', {'do': 'npm install --frozen-lockfile'}
 " Plug 'neoclide/coc-css', {'do': 'npm install --frozen-lockfile'}
-" Plug 'neoclide/coc-html', {'do': 'npm install --frozen-lockfile'}
-" Plug 'neoclide/coc-tsserver', {'do': 'npm install --frozen-lockfile'}
+Plug 'neoclide/coc-html', {'do': 'npm install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'npm install --frozen-lockfile'}
 " Plug 'neoclide/coc-python', {'do': 'npm install --frozen-lockfile'}
 " Plug 'neoclide/coc-sql', {'do': 'npm install --frozen-lockfile'}
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
@@ -147,6 +154,13 @@ let test#swift#swiftpm#executable = "xcodebuild test -scheme to-do-list -workspa
 " let test#ruby#rspec#executable = "bundle exec rspec"
 " let test#ruby#rspec#executable = 'spring rspec'
 let test#vim#term_position = "vert botright 85"
+
+
+" ================
+" Fix for Tab space after updating coc
+" ===============
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ================
 " Markdown Preview
@@ -204,13 +218,17 @@ imap <silent> <C-J> <%  %><Esc>2hi
 :abbr pry require 'pry'; binding.pry<ESC>
 :abbr prn require 'pry'; require 'pry-nav'; binding.pry<ESC>
 :abbr bre require 'debug'; binding.break<ESC>
+" :abbr div <div><CR><CR></div><ESC>kkaclass=""
+" :abbr form <form><CR><CR></form><ESC>
+" :abbr butt <button class=""><CR><CR></button><ESC>kcc
+" :abbr inpu <input type="text" value="" class="" /><ESC>$hhhi
 
 " RSpec abbr's
 :abbr desc describe '' do<CR><ESC>BB
 :abbr cont context '' do<CR><ESC>BB
 :abbr iti it '' do<CR><ESC>BB
 :abbr itii it { expect(1).to be==1 }<ESC>
-:abbr let let(:) {}<ESC>02wl
+:abbr lett let(:) {}<ESC>02wl
 :abbr befo before do<CR><ESC>
 :abbr allo allow().to receive(:)<ESC>0ww
 :abbr expec expect().to be<ESC>0ww
@@ -283,7 +301,7 @@ nmap <silent> <leader>// :nohlsearch<CR>
 nnoremap <leader>pv :NERDTreeToggle<CR>
 nnoremap <leader>pc :NERDTreeFind<CR>
  " It's necessary run to install :CocInstall coc-explorer
-let g:coc_global_extensions = ['coc-explorer', 'coc-solargraph']
+let g:coc_global_extensions = ['coc-explorer', 'coc-solargraph', 'coc-tsserver', 'coc-elixir']
 nmap <C-\> :CocCommand explorer --width 80<CR>
 nnoremap <leader>ps :Rg<CR>
 nnoremap <Leader>pff :Files<CR>
@@ -299,6 +317,9 @@ nnoremap <Leader>pfjm :Files app/assets/javascripts/models<CR>
 nnoremap <Leader>pfja :Files app/assets/javascripts/backbone/app_bundle<CR>
 nnoremap <Leader>pfjt :Files app/assets/javascripts/templates<CR>
 nnoremap <Leader>pfjv :Files app/assets/javascripts/backbone/views<CR>
+
+" Find in Notes
+nnoremap <Leader>pfn :Files /Users/rachidcalazans/Dropbox/Notes<CR>
 
 " ================
 " Tagbar Commands
