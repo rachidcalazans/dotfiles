@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH="$PATH:$HOME/.oh-my-zsh"
+# export ZSH="$PATH:$HOME/.oh-my-zsh"
+export ZSH="/Users/rachidcalazans/.oh-my-zsh"
 
 # vi-mode
 set -o vi
@@ -8,6 +9,8 @@ export VISUAL='vim'
 
 export AWS_SECRET=FIX_ME
 export AWS_KEY=FIX_ME
+
+alias cwo='chid workstation open'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -120,10 +123,16 @@ function prompt_rvm {
 
 RPROMPT='%F{white}$(prompt_rvm)'
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # [[ -s "$HOME/.vimrc" ]] && source "$HOME/.vimrc" # Load ~/.vimrc
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Load RVM into a shell session *as a function*
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
